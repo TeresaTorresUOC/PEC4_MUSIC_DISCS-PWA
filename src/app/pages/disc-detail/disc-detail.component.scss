@@ -1,0 +1,40 @@
+.loading {
+    display: grid;
+    place-items: center;
+    padding: 32px 0;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  .title {
+    margin: 0;
+  }
+  
+  .hero {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    align-items: flex-start;
+  }
+  
+  .cover {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  .hero-text {
+    display: grid;
+    gap: 12px;
+  }
+  
+  .details p {
+    margin: 8px 0;
+  }
+  

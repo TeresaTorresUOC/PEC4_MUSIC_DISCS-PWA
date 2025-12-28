@@ -1,0 +1,55 @@
+@if (loading) {
+    <div class="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  } @else {
+    @if (album) {
+      <div class="header">
+        <!-- Arriba solo un campo representativo: título -->
+        <h2 class="title">{{ album.title }}</h2>
+  
+        <!-- Botón back a la derecha -->
+        <button mat-stroked-button (click)="back()">
+          <mat-icon>arrow_back</mat-icon>
+          Back
+        </button>
+      </div>
+  
+      <mat-divider></mat-divider>
+  
+      <div class="hero">
+        <img class="cover" [src]="album.artwork" [alt]="album.title" />
+  
+        <div class="hero-text">
+          <p class="artist"><strong>Artista:</strong> {{ album.artist }}</p>
+  
+          <button mat-raised-button (click)="toggleDetails()">
+            <mat-icon>{{ showDetails ? 'expand_less' : 'expand_more' }}</mat-icon>
+            {{ showDetails ? 'Hide details' : 'Show all details' }}
+          </button>
+        </div>
+      </div>
+  
+      @if (showDetails) {
+        <mat-accordion>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Detalles del álbum</mat-panel-title>
+            </mat-expansion-panel-header>
+  
+            <div class="details">
+              <p><strong>Género:</strong> {{ album.genre ?? '-' }}</p>
+              <p><strong>Fecha:</strong> {{ album.releaseDate ? (album.releaseDate | date:'yyyy-MM-dd') : '-' }}</p>
+              <p><strong>Nº canciones:</strong> {{ album.trackCount ?? '-' }}</p>
+  
+              <p><strong>Popularity (inventado):</strong> {{ popularity }}%</p>
+              <p><strong>Rating (inventado):</strong> {{ rating }}/5</p>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      }
+    } @else {
+      <p>No se ha encontrado el álbum.</p>
+    }
+  }
+  
